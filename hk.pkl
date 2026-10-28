@@ -1,0 +1,13 @@
+amends "package://github.com/jdx/hk/releases/download/v2.5.0/hk@2.5.0#/Config.pkl"
+// Pre-push gate: the merge queue's `mise run check`, one round-trip sooner. The
+// `unset` guard: git exports GIT_DIR etc. into hook children, which would point
+// the suite's fixture git at this repo.
+hooks {
+  ["pre-push"] {
+    steps {
+      ["check"] {
+        check = "unset $(git rev-parse --local-env-vars); mise run check"
+      }
+    }
+  }
+}

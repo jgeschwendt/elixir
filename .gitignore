@@ -1,0 +1,7 @@
+# Mix build output, fetched deps, `mix test --cover` and ExDoc output, per package
+*.ez
+_build/
+cover/
+deps/
+doc/
+erl_crash.dump

@@ -1,0 +1,17 @@
+[tools]
+elixir = "1.20.2-otp-28"
+erlang = "28.5.0.2"
+# hk runs the pre-push gate (hk.pkl); `hk install --mise` wires it per clone.
+hk = "2.5.0"
+
+# the gate: the local merge queue and hk.pkl's pre-push both run `mise run check`
+[tasks.check]
+description = "format check, compile -W, credo --strict and test --cover in packages/credo"
+dir = "packages/credo"
+run = [
+  "mix deps.get",
+  "mix format --check-formatted",
+  "mix compile --warnings-as-errors",
+  "mix credo --strict",
+  "mix test --cover",
+]
