@@ -1,4 +1,4 @@
-defmodule Jlg.Credo.MixProject do
+defmodule JLG.Credo.MixProject do
   use Mix.Project
 
   def project do

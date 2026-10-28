@@ -1,4 +1,4 @@
-defmodule Jlg.CredoTest do
+defmodule JLG.CredoTest do
   use ExUnit.Case, async: true
 
   alias Credo.Execution
@@ -9,8 +9,8 @@ defmodule Jlg.CredoTest do
   @tmp Path.join(System.tmp_dir!(), "jlg_credo")
 
   test "credo.exs names every check the pinned Credo ships, alphabetically, and nothing else" do
-    [{:plugin, Jlg.Credo, config}] =
-      %{Execution.build() | plugins: [{Jlg.Credo, []}]}
+    [{:plugin, JLG.Credo, config}] =
+      %{Execution.build() | plugins: [{JLG.Credo, []}]}
       |> InitializePlugins.call([])
       |> Execution.get_config_files()
 
@@ -56,7 +56,7 @@ defmodule Jlg.CredoTest do
         def project, do: [app: :fixture, deps: [{:jlg_credo, #{dep}, only: [:dev, :test], runtime: false}], version: "0.1.0"]
       end
       EOF
-      echo '%{configs: [%{#{checks} name: "default", plugins: [{Jlg.Credo, []}]}]}' > .credo.exs
+      echo '%{configs: [%{#{checks} name: "default", plugins: [{JLG.Credo, []}]}]}' > .credo.exs
       printf 'defmodule Fixture do\\n  @moduledoc false\\n  def zero(), do: if(true, do: 1, else: 2)\\nend\\n' > lib/fixture.ex
       mix do deps.get + deps.compile
       """)

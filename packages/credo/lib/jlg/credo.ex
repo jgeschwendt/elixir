@@ -1,4 +1,4 @@
-defmodule Jlg.Credo do
+defmodule JLG.Credo do
   @moduledoc """
   The canonical Credo config, registered as the default config every project's
   `.credo.exs` merges over.
