@@ -6,10 +6,17 @@
     %{
       checks: %{
         disabled: [
+          # runs only on Elixir < 1.8 (Credo skips it under the 1.20 pin and prints a
+          # notice every run)
+          {Credo.Check.Readability.PreferUnquotedAtoms, []},
           # mutually exclusive with CondStatements (Credo's own note): the four live
           # apps write if/else 398 times and a two-clause cond 0 times (bifrost 39,
           # bridge 340, visor 12, pty 7; probed 2026-10-28)
-          {Credo.Check.Refactor.CondInsteadOfIfElse, []}
+          {Credo.Check.Refactor.CondInsteadOfIfElse, []},
+          # runs only on Elixir < 1.8 (see PreferUnquotedAtoms)
+          {Credo.Check.Refactor.MapInto, []},
+          # runs only on Elixir < 1.8 (see PreferUnquotedAtoms)
+          {Credo.Check.Warning.LazyLogging, []}
         ],
         enabled: [
           # Consistency
@@ -47,7 +54,6 @@
           {Credo.Check.Readability.PipeIntoAnonymousFunctions, []},
           {Credo.Check.Readability.PredicateFunctionNames, []},
           {Credo.Check.Readability.PreferImplicitTry, []},
-          {Credo.Check.Readability.PreferUnquotedAtoms, []},
           {Credo.Check.Readability.RedundantBlankLines, []},
           {Credo.Check.Readability.Semicolons, []},
           {Credo.Check.Readability.SeparateAliasRequire, []},
@@ -77,7 +83,6 @@
           {Credo.Check.Refactor.FunctionArity, []},
           {Credo.Check.Refactor.IoPuts, []},
           {Credo.Check.Refactor.LongQuoteBlocks, []},
-          {Credo.Check.Refactor.MapInto, []},
           {Credo.Check.Refactor.MapJoin, []},
           {Credo.Check.Refactor.MapMap, []},
           {Credo.Check.Refactor.MatchInCondition, []},
@@ -104,7 +109,6 @@
           {Credo.Check.Warning.ForbiddenModule, []},
           {Credo.Check.Warning.IExPry, []},
           {Credo.Check.Warning.IoInspect, []},
-          {Credo.Check.Warning.LazyLogging, []},
           {Credo.Check.Warning.LeakyEnvironment, []},
           {Credo.Check.Warning.MapGetUnsafePass, []},
           {Credo.Check.Warning.MissedMetadataKeyInLoggerConfig, []},
