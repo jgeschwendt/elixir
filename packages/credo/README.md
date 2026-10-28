@@ -11,7 +11,7 @@ The canonical [Credo](https://hexdocs.pm/credo) settings for `jlg`—maximalist 
 
 ```elixir
 # .credo.exs
-%{configs: [%{name: "default", plugins: [{Jlg.Credo, []}]}]}
+%{configs: [%{name: "default", plugins: [{JLG.Credo, []}]}]}
 ```
 
 `mix credo` then runs every check strict: `strict: true` rides in the base.

@@ -1,1 +1,1 @@
-%{configs: [%{name: "default", plugins: [{Jlg.Credo, []}], strict: true}]}
+%{configs: [%{name: "default", plugins: [{JLG.Credo, []}], strict: true}]}
