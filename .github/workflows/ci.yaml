@@ -1,0 +1,15 @@
+name: ci
+
+# dispatch only while the repo is private (Actions minutes are metered); push and pull_request return when it goes public
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    # ubuntu-24.04: mise takes Erlang from Bob's Ubuntu builds (as bifrost).
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: jdx/mise-action@v2
+      - run: mix local.hex --force && mix local.rebar --force
+      - run: mise run check
